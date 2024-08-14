@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!-- CKEditor -->
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css">
+</head>
+<body>
+<form method="post" action="/main/saveupdatearticle/{{article.id}}"> {%csrf_token%}
+
+    <input type="text" placeholder="Enter new article" name="newarticle" value="{{ article.title }}">
+
+    <br><br>
+
+    <label for="editor" style="font-family: Monaco, sans-serif">Article content:</label>
+    <div id="editor" style="border: 1px solid #ccc; height: 300px;">
+        {{ article.content|safe }}
+        <input type="hidden" name="content" id="content">
+    </div>
+
+    <br>
+
+    <label for="myimage">Select an image:</label>
+            <input type="file" id="myimage" accept="image/*" name="image">
+
+  <br>
+
+    <label for="tagschosen">Choose tags to associate</label>
+        <select id="tagschosen" name="tagschosen" multiple style="border: 1px solid #dee2e6;
+        padding: 5px;" data-model-name="tags">
+            {% for item in tags %}
+                <option style="border-bottom: 1px solid #dee2e6;" value="{{ item.id }}">{{ item.tag_NAME }}</option>
+            {% empty %}
+                <option disabled>No items found</option>
+            {% endfor %}
+        </select>
+
+
+    <button type="submit">Update Article</button>
+
+</form>
+
+
+
+<script type="importmap">
+{
+    "imports": {
+        "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+        "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+    }
+}
+</script>
+<script type="module">
+import {
+    ClassicEditor,
+    Essentials,
+    Paragraph,
+    Bold,
+    Italic,
+    Font
+} from 'ckeditor5';
+
+ClassicEditor
+    .create(document.querySelector('#editor'), {
+        plugins: [Essentials, Paragraph, Bold, Italic, Font],
+        toolbar: [
+            'undo', 'redo', '|', 'bold', 'italic', '|',
+            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+        ]
+    })
+    .then(editor => {
+        window.editor = editor;
+
+        // Update hidden input on form submit
+        const form = document.querySelector('form');
+        form.addEventListener('submit', () => {
+            const content = editor.getData();
+            document.getElementById('content').value = content;
+        });
+    })
+    .catch(error => {
+        console.error(error);
+    });
+</script>
+</body>
+</html>
