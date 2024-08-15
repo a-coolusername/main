@@ -127,7 +127,7 @@ def updatearticle(request, id):
     return render(request, 'updatearticle.html', {'article': article,'tags': tag})
 
 
-# # # FFIX views for input article more fields
+
 @login_required
 def saveupdatearticle(request, id):
     if request.method == 'POST':
@@ -138,13 +138,11 @@ def saveupdatearticle(request, id):
         new_tags = request.POST.getlist('tagschosen')
         if new_article_title:
             article.title = new_article_title
-            article.save()
         if new_content:
             article.content = new_content
-            article.save()
         if new_image:
             article.image = new_image
-            article.save()
         if new_tags:
             article.tags_associated.set(new_tags)
+        article.save()
     return redirect('/main/ArticleView/')
