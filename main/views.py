@@ -127,7 +127,7 @@ def updatearticle(request, id):
     return render(request, 'updatearticle.html', {'article': article,'tags': tag})
 
 
-# # # FFIX views for input article more fields
+
 @login_required
 def saveupdatearticle(request, id):
     if request.method == 'POST':
