@@ -126,7 +126,7 @@ def updatearticle(request, id):
     tag = TAGinfo.objects.all()
     return render(request, 'updatearticle.html', {'article': article,'tags': tag})
 
-
+#conflict 2
 @login_required
 def saveupdatearticle(request, id):
     if request.method == 'POST':
