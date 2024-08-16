@@ -127,8 +127,6 @@ def updatearticle(request, id):
     return render(request, 'updatearticle.html', {'article': article,'tags': tag})
 
 
-
-# hello world
 @login_required
 def saveupdatearticle(request, id):
     if request.method == 'POST':
