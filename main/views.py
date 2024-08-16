@@ -126,9 +126,7 @@ def updatearticle(request, id):
     tag = TAGinfo.objects.all()
     return render(request, 'updatearticle.html', {'article': article,'tags': tag})
 
-# ta3deel 2
 
-# hello world
 @login_required
 def saveupdatearticle(request, id):
     if request.method == 'POST':
