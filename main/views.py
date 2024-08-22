@@ -55,8 +55,9 @@ def savearticle(request):
     content = request.POST.get('content')
     image = request.FILES.get('image')
     tags = request.POST.getlist('tagschosen')
+    state = request.POST.get('check')
     articleinit = ARTICLEinfo.objects.create(title=name, content=content, image=image,
-                                             USERID=request.user)
+                                             isactive=state, USERID=request.user)
 
     tag_objects = TAGinfo.objects.filter(id__in=tags)
     articleinit.tags_associated.add(*tag_objects)
