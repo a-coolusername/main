@@ -30,9 +30,9 @@
 
        .button{
     background-color: #d2d2d2;
-    width: 200px;
-    height: 100px;
-    border-radius: 200px;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
     cursor: pointer;
     position: relative;
     transition: 0.2s;
@@ -41,9 +41,9 @@
     position: absolute;
     content: '';
     background-color: #fff;
-    width: 90px;
-    height: 90px;
-    border-radius: 200px;
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
     margin: 5px;
     transition: 0.2s;
 }
@@ -52,7 +52,7 @@ input:checked + .button{
     background-color: #20096d;
 }
 input:checked + .button::before{
-    transform: translateX(100px);
+    transform: translateX(50px);
 }
 .inputhide{
     display: none;
@@ -146,9 +146,11 @@ input:checked + .button::before{
             {% endfor %}
         </select>
 
-            <p>is acitve?</p>
+        <label for="check">is active?</label>
+            <p style="display: inline;">no</p>
         <input type="checkbox" id="check" class="inputhide">
         <label for="check" class="button"></label>
+            <p style="display: inline;">yes</p>
 
             <br><br>
             <input type="submit" value="Create Article" style="font-family: Monaco, sans-serif">
