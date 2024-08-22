@@ -44,7 +44,7 @@
     width: 45px;
     height: 45px;
     border-radius: 100px;
-    margin: 5px;
+    margin:3px;
     transition: 0.2s;
 }
 
@@ -52,7 +52,7 @@ input:checked + .button{
     background-color: #20096d;
 }
 input:checked + .button::before{
-    transform: translateX(50px);
+    transform: translateX(48px);
 }
 .inputhide{
     display: none;
@@ -145,12 +145,10 @@ input:checked + .button::before{
                 <option disabled>No items found</option>
             {% endfor %}
         </select>
-
-        <label for="check">is active?</label>
-            <p style="display: inline;">no</p>
+        <br>
+            <h3><label for="check">is active?</label></h3>
         <input type="checkbox" id="check" class="inputhide">
         <label for="check" class="button"></label>
-            <p style="display: inline;">yes</p>
 
             <br><br>
             <input type="submit" value="Create Article" style="font-family: Monaco, sans-serif">
