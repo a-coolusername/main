@@ -26,6 +26,37 @@
         .chevron-down {
             transition: transform 0.3s ease;
         }
+
+
+       .button{
+    background-color: #d2d2d2;
+    width: 200px;
+    height: 100px;
+    border-radius: 200px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+}
+.button::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 90px;
+    height: 90px;
+    border-radius: 200px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+input:checked + .button{
+    background-color: #20096d;
+}
+input:checked + .button::before{
+    transform: translateX(100px);
+}
+.inputhide{
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -115,6 +146,9 @@
             {% endfor %}
         </select>
 
+            <p>is acitve?</p>
+        <input type="checkbox" id="check" class="inputhide">
+        <label for="check" class="button"></label>
 
             <br><br>
             <input type="submit" value="Create Article" style="font-family: Monaco, sans-serif">
