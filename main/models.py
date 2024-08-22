@@ -21,3 +21,4 @@ class ARTICLEinfo(models.Model):
     USERID = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     lastupdate = models.DateTimeField(null=True, blank=True, auto_now=True)
+    isactive = models.BooleanField(default=0)
