@@ -56,6 +56,10 @@ def savearticle(request):
     image = request.FILES.get('image')
     tags = request.POST.getlist('tagschosen')
     state = request.POST.get('check')
+    if state == "on":
+        state = "True"
+    else:
+        state = "False"
     articleinit = ARTICLEinfo.objects.create(title=name, content=content, image=image,
                                              isactive=state, USERID=request.user)
 
